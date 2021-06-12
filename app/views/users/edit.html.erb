@@ -1,0 +1,33 @@
+<%= flash[:notice] %>
+
+<% if @user.errors.any? %>
+  <div class="error_explanation" >
+   <% @user.errors.full_messages.each do |message| %>
+    <%= message %>
+   <% end %>
+  </div>
+<% end %>
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+<h2>User info</h2>
+<%= form_with model:@user, local:true do |f| %>
+<div class="form-group">
+ <h4>Name</h4>
+ <%= f.text_field :name, autofocus: true%>
+</div>
+<div class="form-group">
+<h4>Image</h4>
+  <%= f.attachment_field :profile_image%>
+</div>
+<div class="form-group">
+ <h4>Introduction</h4>
+  <%= f.text_field :introduction%>
+
+</div>
+<div class="form-group">
+  <%= f.submit "Update User" %>
+</div>
+<% end %>
+
