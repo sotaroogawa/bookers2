@@ -1,7 +1,6 @@
 class SearchsController < ApplicationController
   def search
-    # viewのform_tagにて
-    # 選択したmodelの値を@modelに代入。
+    # viewのform_withにて選択したmodelの値を@modelに代入。
     @model = params["model"]
     # 選択した検索方法の値を@methodに代入。
     @method = params["method"]
@@ -16,7 +15,7 @@ class SearchsController < ApplicationController
   def search_for(model, content, method)
     # 選択したモデルがuserだったら
     if model == 'user'
-      # 選択した検索方法がが完全一致だったら
+      # 選択した検索方法が完全一致だったら
       if method == 'perfect'
         User.where(name: content)
       # 選択した検索方法がが部分一致だったら
